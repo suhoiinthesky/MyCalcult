@@ -73,7 +73,7 @@ public class calcul3 {
             String[] parts = math.trim().split(" ");
             String romanRegex = "^(I|II|III|IV|V|VI|VII|VIII|IX|X)$";
             String arabicRegex = "^[1-9]|10$";
-            if (parts.length > 4){
+            if (parts.length => 4){
                 throw new ArrayIndexOutOfBoundsException("По ТЗ нельзя выпольнять операцию более чем с 2 переменными и одним оператором");
             }
             try {
@@ -102,7 +102,7 @@ public class calcul3 {
                 resul = calcult(Rnum1, Rnum2, c);
                 String resultRoman = convertToRoman(resul);
                 System.out.println("Результат вычисления " + resultRoman);
-                System.out.println("Результат вычисления " + resul);
+            
 
 
             } else if ((a.matches(arabicRegex) && b.matches(romanRegex)) || (a.matches(romanRegex) && b.matches(arabicRegex))) {
