@@ -1,11 +1,10 @@
 package suhoiCalcult;
 
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class calcul3 {
+public class calcul {
 
     private static final Map<String, Integer> romeMap = new HashMap<>();
 
@@ -63,9 +62,9 @@ public class calcul3 {
     }
 
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
 
-        while (true) {
+
             System.out.println("Добро пожаловать в калькулятор");
             System.out.println("Введите выражение через проблел");
             Scanner scanner = new Scanner(System.in);
@@ -73,43 +72,36 @@ public class calcul3 {
             String[] parts = math.trim().split(" ");
             String romanRegex = "^(I|II|III|IV|V|VI|VII|VIII|IX|X)$";
             String arabicRegex = "^[1-9]|10$";
-            if (parts.length => 4){
+            if (parts.length >= 4){
                 throw new ArrayIndexOutOfBoundsException("По ТЗ нельзя выпольнять операцию более чем с 2 переменными и одним оператором");
             }
-            try {
-                String a = parts[0];
-                String c = parts[1];
-                String b = parts[2];
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Не верный формат ввода. Вводите переменные через пробел.");
-            }
-            String a = parts[0];
-            String c = parts[1];
-            String b = parts[2];
-            int resul;
-            if (a.matches(arabicRegex) && b.matches(arabicRegex)) {
-                int num1 = Integer.parseInt(a);
-                int nub2 = Integer.parseInt(b);
-                resul = calcult(num1, nub2, c);
-                System.out.println("Результат вычисления " + resul);
+                try {
+                    String a = parts[0];
+                    String c = parts[1];
+                    String b = parts[2];
+                    int resul;
+                    if (a.matches(arabicRegex) && b.matches(arabicRegex)) {
+                        int num1 = Integer.parseInt(a);
+                        int num2 = Integer.parseInt(b);
+                        resul = calcult(num1, num2, c);
+                        System.out.println("Результат вычисления " + resul);
 
-            } else if (a.matches(romanRegex) && b.matches(romanRegex)) {
-                int Rnum1 = romeMap.get(a);
-                int Rnum2 = romeMap.get(b);
+                    } else if (a.matches(romanRegex) && b.matches(romanRegex)) {
+                        int Rnum1 = romeMap.get(a);
+                        int Rnum2 = romeMap.get(b);
 
-                resul = calcult(Rnum1, Rnum2, c);
-
-                resul = calcult(Rnum1, Rnum2, c);
-                String resultRoman = convertToRoman(resul);
-                System.out.println("Результат вычисления " + resultRoman);
-            
+                        resul = calcult(Rnum1, Rnum2, c);
+                        String resultRoman = convertToRoman(resul);
+                        System.out.println("Результат вычисления " + resultRoman);
+                        System.out.println("Результат вычисления " + resul);
 
 
-            } else if ((a.matches(arabicRegex) && b.matches(romanRegex)) || (a.matches(romanRegex) && b.matches(arabicRegex))) {
-                throw new IllegalArgumentException("Нельзя выполнять вычисления между двумя разными системами исчисления");
-            } else {
-                System.out.println("Вы ввели что то не то");
-            }
-        }
+                    } else if ((a.matches(arabicRegex) && b.matches(romanRegex)) || (a.matches(romanRegex) && b.matches(arabicRegex))) {
+                        throw new IllegalArgumentException("Нельзя выполнять вычисления между двумя разными системами исчисления");
+                    }
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println("Не верный формат ввода. Вводите переменные через пробел.");
+                }
     }
 }
+
